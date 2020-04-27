@@ -1,0 +1,92 @@
+<div>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    
+    <h1 class="display-1" align = "center">World's Population
+    <button style = "background-color: #555555; color:rgb(255, 255, 255); padding: 15px 32px; text-align: center; font-size: 14px; margin: 4px 2px;
+  cursor: pointer"><a href = "#container" style = "color:rgb(255, 255, 255);" align = "center">Go to Visual Representation</a></button> </h1>
+    <br> 
+    <figure class="highcharts-figure">
+    <table id="dataTable" class = "table table-striped" width = "60%">
+	<thead>
+    <th scope="col">Country</th>
+    <th scope="col">Population</th>
+  </thead>
+  <tbody>
+	<% for (var i =0; i <229;  i++ ) { %>
+	<tr>
+	<td> <%= country[i] %> </td>
+	<td> <%= population[i] %> </td>
+	</tr>
+	<% } %>
+	</tbody>
+	</table>
+	<br>
+	<div id="container"></div>
+	</figure>
+		</div>
+
+<script>
+Highcharts.theme = {
+    colors: ['#058DC7', '#50B432', '#ED561B', '#DDDF00', '#24CBE5', '#64E572',   
+             '#FF9655', '#FFF263', '#6AF9C4'],
+    chart: {
+        backgroundColor: {
+            linearGradient: [0, 0, 500, 500],
+            stops: [
+                [0, 'rgb(255, 255, 255)'],
+                [1, 'rgb(240, 240, 255)']
+            ]
+        },
+    },
+    title: {
+        style: {
+            color: '#000',
+            font: 'bold 16px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+    subtitle: {
+        style: {
+            color: '#666666',
+            font: 'bold 12px "Trebuchet MS", Verdana, sans-serif'
+        }
+    },
+    legend: {
+        itemStyle: {
+            font: '9pt Trebuchet MS, Verdana, sans-serif',
+            color: 'black'
+        },
+        itemHoverStyle:{
+            color: 'gray'
+        }   
+    }
+};
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
+Highcharts.chart('container', {
+    data: {
+        table: 'dataTable'
+    },
+    chart: {
+        type: 'bar',
+        height: 5000
+    },
+    
+    title: {
+        text: 'WORLD Population'
+    },
+    yAxis: {
+        title: {
+            text: 'People'
+        }
+    },
+});
+</script>
+
